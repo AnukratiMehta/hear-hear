@@ -14,24 +14,24 @@ const SongDetails = () => {
 
     const { data, isFetching } = useGetChartTracksQuery(songid)
     const { data: shazamData, isFetching: isFetchingShazamData } = useGetShazamDetailsQuery(songid)
-    const { data: relatedData, isFetching: isFetchingRelatedData, error} = useGetRelatedSongsQuery(songid)
+    const { data: relatedData, isFetching: isFetchingRelatedData, error } = useGetRelatedSongsQuery(songid)
 
-   
+
     if (isFetchingShazamData && isFetchingRelatedData) return <Loader title="Searching song details" />;
 
     if (error) return <Error />;
 
-    const lyricsKey = shazamData?.resources?.lyrics && Object.keys(shazamData.resources.lyrics)[0]; 
+    const lyricsKey = shazamData?.resources?.lyrics && Object.keys(shazamData.resources.lyrics)[0];
     const lyrics = shazamData?.resources?.lyrics?.[lyricsKey]?.attributes?.text;
 
     const handlePauseClick = () => {
         dispatch(playPause(false));
-      };
-    
-      const handlePlayClick = (song, i) => {
+    };
+
+    const handlePlayClick = (song, i) => {
         dispatch(setActiveSong({ song, data, i }));
         dispatch(playPause(true));
-      };
+    };
 
 
     return (
@@ -62,12 +62,12 @@ const SongDetails = () => {
                 </div>
             </div>
             <RelatedSongs
-            relatedData={relatedData}
-            artistId={artistId}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            handlePauseClick={handlePauseClick}
-            handlePlayClick={handlePlayClick}
+                relatedData={relatedData}
+                artistId={artistId}
+                isPlaying={isPlaying}
+                activeSong={activeSong}
+                handlePauseClick={handlePauseClick}
+                handlePlayClick={handlePlayClick}
             />
         </div>
 

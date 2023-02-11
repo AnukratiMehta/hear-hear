@@ -35,7 +35,7 @@ const DetailsHeader = ({ artworkURL, tracks, songId, shazamData, artistId, artis
 
         </div>
       </div>
-      <div className="w-full sm:h-44 h-24"/>
+      <div className="w-full sm:h-44 h-24" />
     </div>)
 };
 

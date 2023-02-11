@@ -8,9 +8,9 @@ const ArtistTopSongs = ({ artistSongIds, artistSongs, isPlaying, activeSong, han
       <div className="mt-6 w-full flex flex-col">
 
         {
-          
+
           artistSongIds && artistSongIds.map((artistSongId, i) => (
-              <ArtistSongBar
+            <ArtistSongBar
               key={`${artistSongId}-${i}`}
               song={artistSongs[artistSongId]}
               artistSongId={artistSongId}
@@ -20,8 +20,8 @@ const ArtistTopSongs = ({ artistSongIds, artistSongs, isPlaying, activeSong, han
               handlePauseClick={handlePauseClick}
               handlePlayClick={handlePlayClick}
 
-              />
-            ))
+            />
+          ))
 
 
         }

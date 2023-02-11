@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ArtistHeader = ({artworkURL, artistName}) => {
+const ArtistHeader = ({ artworkURL, artistName }) => {
     return (
         <div className='relative w-full flex flex-col'>
             <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
@@ -11,7 +11,7 @@ const ArtistHeader = ({artworkURL, artistName}) => {
 
                 <div className="ml-5">
                     <p className="font-bold sm:text-3xl text-xl text-white">
-                        { artistName || 'No artist found'}
+                        {artistName || 'No artist found'}
                     </p>
 
                 </div>
