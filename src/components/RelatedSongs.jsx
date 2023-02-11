@@ -9,8 +9,7 @@ const RelatedSongs = ({ relatedData, artistId, isPlaying, activeSong, handlePaus
       <h1 className="font-bold text-3xl text-white">Related Songs:</h1>
       <div className="mt-6 w-full flex flex-col">
         
-      {songIds ? 
-  songIds.map((songId, i) => (
+      {songIds && songIds.map((songId, i) => (
     <SongBar
       key={`${songId}-${i}`}
       song={shazamSongs[songId]}
@@ -21,21 +20,7 @@ const RelatedSongs = ({ relatedData, artistId, isPlaying, activeSong, handlePaus
       handlePauseClick={handlePauseClick}
       handlePlayClick={handlePlayClick}
     />
-  )) 
-: 
-  artistData?.data?.relationships?.albums?.data?.map((artistSong, i) => (
-    <SongBar
-      key={`${artistId}-${i}`}
-      artistSong={artistSong}
-      i={i}
-      artistId={artistId}
-      isPlaying={isPlaying}
-      activeSong={activeSong}
-      handlePauseClick={handlePauseClick}
-      handlePlayClick={handlePlayClick}
-    />
-  ))
-}
+  )) }
 
       </div>
     </div>

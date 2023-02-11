@@ -11,7 +11,7 @@ import 'swiper/css/free-mode';
 import { TopCharts } from '../pages';
 
 const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick }) => (
-  <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
+  <div className={`w-full flex flex-row items-center hover:bg-[#Ee4C7C] ${activeSong?.title === song?.title ? 'bg-[#Ee4C7C]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
     <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
     <div className="flex-1 flex flex-row justify-between items-center">
       <img className="w-20 h-20 rounded-lg" src={song?.images?.coverart} alt={song?.title} />
@@ -45,44 +45,44 @@ const TopPlay = () => {
   const divRef = useRef(null);
 
   useEffect(() => {
-    divRef.current.scrollIntoView({ behaviour: 'smooth'});
+    divRef.current.scrollIntoView({ behaviour: 'smooth' });
   });
 
   const topPlays = data?.tracks?.slice(0, 5);
 
   const handlePauseClick = () => {
     dispatch(playPause(false))
- };
+  };
 
- const handlePlayClick = (song, i) => {
-    dispatch(setActiveSong({ song, data, i}));
+  const handlePlayClick = (song, i) => {
+    dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true))
- };
+  };
 
- return (
-  <div ref={divRef} className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[100px] max-w-full flex flex-col">
-    <div className="w-full flex flex-col ">
-      <div className="flex flex-row justify-between items-center">
-      <h2 className="text-white font-bold text-2xl">Top Charts</h2>
+  return (
+    <div ref={divRef} className=" pt-[5%] xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col">
+      <div className="w-full flex flex-col xl:h-[60%]">
+        <div className="flex flex-row justify-between items-center">
+          <h2 className="text-white font-bold text-2xl">Top Charts</h2>
           <Link to="/top-charts">
             <p className="text-gray-300 text-base cursor-pointer">See more</p>
           </Link>
+        </div>
+        <div className="mt-4 flex flex-col gap-1">
+          {topPlays?.map((song, i) => (
+            <TopChartCard
+              song={song}
+              i={i}
+              key={song.key}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={() => handlePlayClick(song, i)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="mt-4 flex flex-col gap-1">
-        {topPlays?.map((song, i) => (
-          <TopChartCard 
-          song={song}
-          i={i}
-          key={song.key}
-          isPlaying={isPlaying}
-          activeSong={activeSong}
-          handlePauseClick={handlePauseClick}
-          handlePlayClick={() => handlePlayClick(song, i)}
-          />
-        ))}
-      </div>
-    </div>
-    <div className="w-full flex flex-col mt-8">
+      <div className="w-full flex flex-col mt-8 xl:h-[40%]">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Artists</h2>
           <Link to="/top-artists">
@@ -111,8 +111,8 @@ const TopPlay = () => {
           ))}
         </Swiper>
       </div>
-  </div>
- )
+    </div>
+  )
 };
 
 export default TopPlay;

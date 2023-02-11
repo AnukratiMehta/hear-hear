@@ -9,6 +9,9 @@ import RelatedSongs from './RelatedSongs';
 import MusicPlayer from './MusicPlayer';
 import Loader from './Loader';
 import Error from './Error';
+import ArtistHeader from './ArtistHeader';
+import ArtistTopSongs from './ArtistTopSongs';
+import ArtistSongBar from './ArtistSongBar';
 
 export {
   TopPlay,
@@ -22,4 +25,7 @@ export {
   MusicPlayer,
   Loader,
   Error,
+  ArtistHeader,
+  ArtistTopSongs,
+  ArtistSongBar
 };

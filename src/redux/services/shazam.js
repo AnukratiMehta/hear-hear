@@ -15,8 +15,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
             getChartTracks: builder.query({ query: () => '/charts/track'}),
             getShazamDetails: builder.query({ query: (songid) => `/shazam-songs/get-details?id=${songid}`}),
             getRelatedSongs: builder.query({ query: (songid) => `/shazam-songs/list-similarities?id=track-similarities-id-${songid}`}),
-            getArtistDetails: builder.query({ query: (artistId) => `/artists/get-summary?id=${artistId}`})
-
+            getArtistDetails: builder.query({ query: (artistId) => `/artists/get-summary?id=${artistId}`}),
+            getSongDetails: builder.query({ query: (songid) => `songs/v2/get-details?id=${songid}`}),
+            getSongBy: builder.query({ query: () => '/charts/list'}),
         }),
 
     });
@@ -25,5 +26,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
         useGetChartTracksQuery,
         useGetShazamDetailsQuery,
         useGetRelatedSongsQuery,
-        useGetArtistDetailsQuery
+        useGetArtistDetailsQuery,
+        useGetSongDetailsQuery,
+        useGetSongByQuery
     } = shazamApi;

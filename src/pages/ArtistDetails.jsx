@@ -1,32 +1,38 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { DetailsHeader, Error, Loader, RelatedSongs } from '../components';
+import { ArtistHeader, Error, Loader, ArtistTopSongs } from '../components';
 import { useGetArtistDetailsQuery } from '../redux/services/shazam';
 
 const ArtistDetails = () => {
 
     const { id: artistId } = useParams();
+
     const { activeSong, isPlaying } = useSelector((state) => state.player);
 
-    const { data: artistData, isFetching: isFetchingArtistDetails, error } = useGetArtistDetailsQuery(artistId)
-   
-    if (isFetchingArtistDetails) return <Loader title="Loading artist details" />;
+    const { data: artistData, isFetching: isFetchingArtistData, artistError } = useGetArtistDetailsQuery(artistId)
 
-    if (error) return <Error />;
+    if (isFetchingArtistData) return <Loader title="Loading artist details" />;
+
+    if (artistError) return <Error />;
+
+    const artistAttributes = artistData?.resources?.artists?.[artistId]?.attributes;
+    const artworkURL = artistAttributes?.artwork?.url.replace("{w}x{h}", "400x400");
+    const artistName = artistAttributes?.name;
+
+    const artistSongs = artistData?.resources?.songs;
+    const artistSongIds = artistSongs && Object.keys(artistSongs);
 
     return (
       <div className="flex flex-col">
-        <DetailsHeader
-          artistId={artistId}
-          artistsData={artistData?.resources?.artists}
+        <ArtistHeader
+        artworkURL={artworkURL} 
+        artistName={artistName}
         />
-  
-        <RelatedSongs
-          artistData={artistData}
-          artistId={artistId}
-          isPlaying={isPlaying}
-          activeSong={activeSong}
+
+        <ArtistTopSongs
+        artistSongs={artistSongs}
+        artistSongIds={artistSongIds}
         />
   
       </div>

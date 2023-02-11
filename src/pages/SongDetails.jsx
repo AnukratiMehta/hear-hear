@@ -21,7 +21,8 @@ const SongDetails = () => {
 
     if (error) return <Error />;
 
-    const lyricsKey = shazamData?.resources?.lyrics && Object.keys(shazamData.resources.lyrics)[0]; const lyrics = shazamData?.resources?.lyrics?.[lyricsKey]?.attributes?.text;
+    const lyricsKey = shazamData?.resources?.lyrics && Object.keys(shazamData.resources.lyrics)[0]; 
+    const lyrics = shazamData?.resources?.lyrics?.[lyricsKey]?.attributes?.text;
 
     const handlePauseClick = () => {
         dispatch(playPause(false));
