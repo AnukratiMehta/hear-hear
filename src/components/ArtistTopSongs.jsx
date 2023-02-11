@@ -1,10 +1,10 @@
 import ArtistSongBar from "./ArtistSongBar";
 
-const ArtistTopSongs = ({ artistSongIds, artistSongs, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistData }) => {
+const ArtistTopSongs = ({ artistName, artistSongIds, artistSongs, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistData }) => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="font-bold text-3xl text-white"> Songs by</h1>
+      <h1 className="font-bold text-3xl text-white"> Songs by {artistName}</h1>
       <div className="mt-6 w-full flex flex-col">
 
         {

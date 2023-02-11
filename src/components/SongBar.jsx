@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import notes from '../assets/notes.jpg'
 
 import PlayPause from './PlayPause';
 
@@ -11,7 +12,7 @@ const SongBar = ({ songData, song, i, artistSong, artistId, isPlaying, activeSon
         className="w-20 h-20 rounded-lg"
         src={song?.attributes?.images?.coverArt?.replace('{w}', '125').replace('{h}', '125') ||
           song?.attributes?.images?.artistAvatar?.replace('{w}', '125').replace('{h}', '125') ||
-          song?.attributes?.share?.image?.replace('{w}', '125').replace('{h}', '125')}
+          song?.attributes?.share?.image?.replace('{w}', '125').replace('{h}', '125') || notes}
         alt={song?.attributes.title}
       />
       <div className="flex-1 flex flex-col justify-center mx-3">

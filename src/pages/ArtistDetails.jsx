@@ -33,6 +33,7 @@ const ArtistDetails = () => {
       <ArtistTopSongs
         artistSongs={artistSongs}
         artistSongIds={artistSongIds}
+        artistName={artistName}
       />
 
     </div>
