@@ -19,6 +19,9 @@ const Discover = () => {
 
     // const genreTitle = genres.find(({ value }) => value === genreListId)?.title;
 
+    const reversedTracks = data?.tracks?.slice().reverse();
+
+
     return (
         <div className="flex flex-col">
             <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10 xl:px-[5%]">
@@ -31,7 +34,7 @@ const Discover = () => {
         </select> */}
             </div>
             <div className="flex flex-wrap justify-center xl:justify-evenly gap-8">
-                {data?.tracks?.map((song, i) => (
+                {reversedTracks?.map((song, i) => (
                     <SongCard
                         key={song.key}
                         song={song}
